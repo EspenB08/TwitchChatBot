@@ -33,7 +33,9 @@ if (message.includes("calc") || message.includes("dpscalc")) {
     `hey @${tags.username} here is a link for the dps calc https://tools.runescape.wiki/osrs-dps/`
   );
 }
-
+if (message.toLocaleLowerCase() ==="hate"+" "){
+client.say(channel, `there is a 50% chance of hate between ${tags.username} and ${message}`)
+}
 //twitch api required to use chat commands like /timeout
 //// if (message.includes("helq")){
 ////     client.say(channel, `/timeout ${tags.username} 10`)
