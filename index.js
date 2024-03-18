@@ -33,4 +33,12 @@ if (message.includes("calc") || message.includes("dpscalc")) {
     `hey @${tags.username} here is a link for the dps calc https://tools.runescape.wiki/osrs-dps/`
   );
 }
+
+//twitch api required to use chat commands like /timeout
+//// if (message.includes("helq")){
+////     client.say(channel, `/timeout ${tags.username} 10`)
+//// }
+// // if (message.includes("helq")){
+// //     client.timeout(channel, tags.username, 80)
+// // }
 });
