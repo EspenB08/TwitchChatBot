@@ -2,7 +2,7 @@ require(`dotenv`).config();
 
 
 const tmi = require("tmi.js");
-const streamer = process.env.STREAMER
+
 const client = new tmi.Client({
   options: { debug: true },
   connection: {
@@ -72,10 +72,8 @@ client.on("message", (channel, tags, message, self) => {
     );
   }
 
-  //twitch api required to use chat commands like /timeout
-  //// if (message.includes("helq")){
-  ////     client.say(channel, `/timeout ${tags.username} 10`)
-  //// }
+  // twitch api required to use chat commands like /timeout
+
   // // if (message.includes("helq")){
   // //     client.timeout(channel, tags.username, 80)
   // // }
