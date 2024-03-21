@@ -1,7 +1,14 @@
 require(`dotenv`).config();
 
-
 const tmi = require("tmi.js");
+
+
+//timer is = to 1 sec. the number behind will determine how long it will wait between each discord invite msg.
+//60 sec will = to 1min. 600 sec will = 10min
+  const timer = 60
+  const timerMultiplier = timer * 1000
+  const DiscordLink = process.env.DISCORD
+  
 
 const client = new tmi.Client({
   options: { debug: true },
@@ -70,6 +77,13 @@ client.on("message", (channel, tags, message, self) => {
         "-"
       )}`
     );
+  }
+
+  setInterval(myDiscord, timerMultiplier);
+  function myDiscord(){
+    client.say(
+      channel, `join my discord here ${DiscordLink}`
+    )
   }
 
   // twitch api required to use chat commands like /timeout
