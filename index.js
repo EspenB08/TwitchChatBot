@@ -18,9 +18,10 @@ const client = new tmi.Client({
   },
   //login ID for the twitchbot
   identity: {
-    username: "NunuLord",
+    username: process.env.USERNAME,
     password: process.env.TOKEN,
   },
+  
   //channel name for which twitch channels the bot should join.
   channels: ["Nunulord"],
 });
