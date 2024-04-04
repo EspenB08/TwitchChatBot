@@ -2,13 +2,11 @@ require(`dotenv`).config();
 
 const tmi = require("tmi.js");
 
-
 //timer is = to 1 sec. the number behind will determine how long it will wait between each discord invite msg.
 //60 sec will = to 1min. 600 sec will = 10min
-  const timer = 600
-  const timerMultiplier = timer * 1000
-  const DiscordLink = process.env.DISCORD
-  
+const timer = 600;
+const timerMultiplier = timer * 1000;
+const DiscordLink = process.env.DISCORD;
 
 const client = new tmi.Client({
   options: { debug: true },
@@ -21,7 +19,7 @@ const client = new tmi.Client({
     username: process.env.USERNAME,
     password: process.env.TOKEN,
   },
-  
+
   //channel name for which twitch channels the bot should join.
   channels: ["Nunulord"],
 });
@@ -30,7 +28,7 @@ client.connect();
 client.on("message", (channel, tags, message, self) => {
   // Ignore echoed messages.
   if (self) return;
-//sends a response to specific messages in the chat
+  //sends a response to specific messages in the chat
   if (
     message.toLowerCase() === "hey" ||
     message === "Heyge" ||
@@ -42,7 +40,10 @@ client.on("message", (channel, tags, message, self) => {
   if (message.toLowerCase() === "give up") {
     client.say(channel, `yeah @${tags.username} you should give up`);
   }
-  if (message.substring(0, 5) === "!calc" || message.substring(0, 8) === "!dpscalc") {
+  if (
+    message.substring(0, 5) === "!calc" ||
+    message.substring(0, 8) === "!dpscalc"
+  ) {
     client.say(
       channel,
       `hey @${tags.username} here is a link for the dps calc https://tools.runescape.wiki/osrs-dps/`
@@ -81,15 +82,19 @@ client.on("message", (channel, tags, message, self) => {
   }
 
   setInterval(myDiscord, timerMultiplier);
-  function myDiscord(){
-    client.say(
-      channel, `join my discord here ${DiscordLink}`
-    )
+  function myDiscord() {
+    client.say(channel, `join my discord here ${DiscordLink}`);
   }
 
-  // twitch api required to use chat commands like /timeout
+  // // twitch api required to use chat commands like /timeout
 
-  // // if (message.includes("helq")){
-  // //     client.timeout(channel, tags.username, 80)
-  // // }
+  // // Check if the message is a timeout command
+  // if (message.startsWith("!timeout")) {
+  //   // Extract username from the message
+  //   const args = message.split(" ");
+  //   const username = args[1];
+
+  //   // Send a chat message to initiate the timeout
+  //   client.say(channel, `/ban humblemanwilso`);
+  // }
 });
