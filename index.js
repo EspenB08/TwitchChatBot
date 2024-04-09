@@ -83,18 +83,7 @@ client.on("message", (channel, tags, message, self) => {
 
   setInterval(myDiscord, timerMultiplier);
   function myDiscord() {
-    client.say(channel, `join my discord here ${DiscordLink}`);
+  client.say(channel, `join my discord here ${DiscordLink}`);
   }
 
-  // // twitch api required to use chat commands like /timeout
-
-  // // Check if the message is a timeout command
-  // if (message.startsWith("!timeout")) {
-  //   // Extract username from the message
-  //   const args = message.split(" ");
-  //   const username = args[1];
-
-  //   // Send a chat message to initiate the timeout
-  //   client.say(channel, `/ban humblemanwilso`);
-  // }
 });
